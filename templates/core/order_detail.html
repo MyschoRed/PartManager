@@ -1,0 +1,23 @@
+<tr>
+    <td class="">Z{{ o.order_id }}</td>
+    <td class="">{{ o.part }}</td>
+    <td class="">{{ o.pcs }} ks</td>
+    <td class="">{{ o.customer.name }}</td>
+    <td class="">
+        <button class="btn btn-sm btn-outline-info" type="button"
+                hx-get="{% url 'order_edit' o.pk %}"
+                hx-target="#order-form"
+                hx-swap="beforeend">Upravit
+        </button>
+        <button class="btn btn-sm btn-outline-danger" type="button"
+                hx-delete="{% url 'order_delete' o.pk %}"
+                hx-target="#order-delete"
+                hx-confirm="Naozaj chces zmazat zakazku {{ o.order_id }}"
+                hx-on="htmx:afterRequest: location.reload()"
+        >Zmazat
+        </button>
+    </td>
+</tr>
+
+
+

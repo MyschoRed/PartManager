@@ -1,23 +1,31 @@
 <div class=" m-1">
     <div class="">
         <h5 class="font-weight-bolder text-center text-secondary text-gradient">
-            Pridat zakaznika</h5>
+            Pridat zakazku</h5>
     </div>
     <form role="form" method="POST"
-          hx-post="{% url 'customer_add' %}"
+          hx-post="{% url 'order_add' %}"
           hx-swap="beforeend"
-          hx-target="#customer-list"
+          hx-target="#order-list"
           hx-on="htmx:afterRequest: location.reload()">
 
-        <div class="my-2">
-            <label>Meno</label>
-            {{ form.name }}
+        <div class="my-4">
+            <label for="">Zakaznik</label>
+            {{ form.customer }}
         </div>
+        <div class="my-4">
+            <label for="">Diel</label>
+            {{ form.part }}
+        </div>
+        <div class="my-4">
+            <label for="">Pocet</label>
+            {{ form.pcs }}
+        </div>
+
         <div class="my-4 text-center">
             <button class="btn btn-sm btn-outline-info" type="submit">Ulozit</button>
             <button class="btn btn-sm btn-outline-secondary" hx-on="click: location.reload()" type="button">Zrusit
             </button>
         </div>
-
     </form>
 </div>

@@ -2,8 +2,8 @@ from django.http import QueryDict
 from django.shortcuts import render, get_object_or_404
 
 from django.views import View
-from core.forms import CustomerForm, PartForm
-from core.models import Part, Customer
+from core.forms import CustomerForm, PartForm, OrderForm
+from core.models import Part, Customer, Order
 
 
 class HomeView(View):
@@ -82,7 +82,7 @@ def part_delete(request, pk):
     part = Part.objects.get(pk=pk)
     part.delete()
     parts = Part.objects.all()
-    return render(request, 'core/customers_list.html', {'parts': parts})
+    return render(request, 'core/parts_list.html', {'parts': parts})
 
 
 def part_edit(request, pk):
@@ -95,9 +95,56 @@ def part_edit(request, pk):
     }
     if request.method == 'GET':
         return render(request, 'core/part_edit.html', ctx)
-    elif request.method == 'PUT':
+    elif request.method == 'POST':
         data = QueryDict(request.body).dict()
         form = PartForm(data, instance=part)
         if form.is_valid():
             form.save()
             return render(request, 'core/parts_list.html', ctx)
+
+
+def order_list(request):
+    orders = Order.objects.all()
+    form = OrderForm()
+    ctx = {
+        'orders': orders,
+        'form': form
+    }
+    return render(request, 'core/orders.html', ctx)
+
+
+def order_add(request):
+    if request.method == 'POST':
+        form = OrderForm(request.POST or None)
+        if form.is_valid():
+            order = form.save()
+            ctx = {'order': order}
+            return render(request, 'core/order_detail.html', ctx)
+        else:
+            print(form.errors)
+    return render(request, 'core/order_add.html', {'form': OrderForm()})
+
+
+def order_delete(request, pk):
+    order = Order.objects.get(pk=pk)
+    order.delete()
+    orders = Order.objects.all()
+    return render(request, 'core/orders.html', {'orders': orders})
+
+
+def order_edit(request, pk):
+    order = get_object_or_404(Order, pk=pk)
+    form = OrderForm(instance=order)
+
+    ctx = {
+        'order': order,
+        'form': form
+    }
+    if request.method == 'GET':
+        return render(request, 'core/order_edit.html', ctx)
+    elif request.method == 'POST':
+        data = QueryDict(request.body).dict()
+        form = OrderForm(data, instance=order)
+        if form.is_valid():
+            form.save()
+            return render(request, 'core/orders.html', ctx)

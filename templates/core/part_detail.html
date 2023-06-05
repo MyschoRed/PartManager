@@ -1,5 +1,5 @@
 <tr>
-    <td class="">{{ p.customer.boost_id }}-{{ p.part_id }}</td>
+    <td class="">{{ p.part_id }}</td>
     <td class="">{{ p.customer_part }}</td>
     <td class="">{{ p.revision }}</td>
     <td class="">{{ p.customer.name }}</td>
@@ -13,7 +13,7 @@
         <button class="btn btn-sm btn-outline-danger" type="button"
                 hx-delete="{% url 'part_delete' p.pk %}"
                 hx-target="#part-delete"
-                hx-confirm="Naozaj chces zmazat diel {{ c.name }}"
+                hx-confirm="Naozaj chces zmazat diel {{ p.name }}"
                 hx-on="htmx:afterRequest: location.reload()"
         >Zmazat
         </button>
