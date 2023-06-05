@@ -1,0 +1,34 @@
+<div class=" m-1">
+    <div class="">
+        <h5 class="font-weight-bolder text-center text-secondary text-gradient">
+            Upravit diel</h5>
+    </div>
+    <form role="form" method="POST"
+          hx-post="{% url 'part_edit' part.pk %}"
+          hx-swap="beforeend"
+          hx-target="#part-edit"
+          hx-on="htmx:afterRequest: location.reload()">
+
+        <div class="my-4">
+            <label for="">Zakaznicke cislo dielu</label>
+            {{ form.customer_part }}
+        </div>
+        <div class="my-4">
+            <label for="">Revizia</label>
+            {{ form.revision }}
+        </div>
+        <div class="my-4">
+            <label for="">Zakaznik</label>
+            {{ form.customer }}
+        </div>
+        <div class="my-4">
+            <label for="">Popis</label>
+            {{ form.description }}
+        </div>
+        <div class="my-4 text-center">
+            <button class="btn btn-sm btn-outline-info" type="submit">Ulozit</button>
+            <button class="btn btn-sm btn-outline-secondary" hx-on="click: location.reload()" type="button">Zrusit
+            </button>
+        </div>
+    </form>
+</div>

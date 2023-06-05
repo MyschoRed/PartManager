@@ -1,0 +1,22 @@
+<nav class="p-0 navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <div class="d-flex">
+                        <button class="nav-link" type="button"
+                                hx-get="{% url 'part_add' %}"
+                                hx-target="#part-form"
+                                hx-swap="beforeend">Novy diel
+                        </button>
+{#                        <button class="nav-link" type="button"#}
+{#                                hx-get="{% url 'part_add' %}"#}
+{#                                hx-target="#part-form"#}
+{#                                hx-swap="beforeend">Import dielov#}
+{#                        </button>#}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

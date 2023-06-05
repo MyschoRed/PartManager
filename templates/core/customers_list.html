@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% block title %}Zakaznici{% endblock %}
+{% block content %}
+    <div class="">
+        {% include 'components/navbar_function_customer.html' %}
+        <div class="m-3">
+            <div class="container-fluid row">
+                <div class="col-8">
+                    <div class="card rounded-0 full-screen-card card-scroll">
+                        <table class="table table-sm table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th class="col-2 text-uppercase text-secondary ">Boost ID</th>
+                                <th class="col-8 text-uppercase text-secondary ">Nazov</th>
+                                <th class="text-uppercase text-secondary ">Akcie</th>
+                            </tr>
+                            </thead>
+                            <tbody id="customer-list">
+                            {% for c in customers %}
+                                {% include 'core/customer_detail.html' %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="p-3 card rounded-0 full-screen-card card-scroll">
+                        <div id="customer-form"></div>
+                        <div id="customer-delete" class="d-none"></div>
+                        <div id="customer-edit" class="d-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

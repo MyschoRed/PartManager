@@ -1,0 +1,10 @@
+.full-screen-card {
+    height: 85vh;
+}
+
+.card-scroll {
+    overflow-y: auto;
+}
+label {
+    color: gray;
+}

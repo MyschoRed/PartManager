@@ -1,0 +1,24 @@
+<tr>
+    <td class="">{{ p.customer.boost_id }}-{{ p.part_id }}</td>
+    <td class="">{{ p.customer_part }}</td>
+    <td class="">{{ p.revision }}</td>
+    <td class="">{{ p.customer.name }}</td>
+    <td class="">{{ p.description }}</td>
+    <td class="">
+        <button class="btn btn-sm btn-outline-info" type="button"
+                hx-get="{% url 'part_edit' p.pk %}"
+                hx-target="#part-form"
+                hx-swap="beforeend">Upravit
+        </button>
+        <button class="btn btn-sm btn-outline-danger" type="button"
+                hx-delete="{% url 'part_delete' p.pk %}"
+                hx-target="#part-delete"
+                hx-confirm="Naozaj chces zmazat diel {{ c.name }}"
+                hx-on="htmx:afterRequest: location.reload()"
+        >Zmazat
+        </button>
+    </td>
+</tr>
+
+
+
