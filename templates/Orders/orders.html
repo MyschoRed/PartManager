@@ -1,15 +1,15 @@
 {% extends 'core/base.html' %}
-{% block title %}Diely{% endblock %}
+{% block title %}Zakazky{% endblock %}
 {% block content %}
     <div class="">
-        {% include 'components/navbar_function_parts.html' %}
+        {% include 'components/navbar_function_orders.html' %}
         <div class="m-3">
             <div class="container-fluid row">
                 <div class="col-3">
                     <div class="p-3 card rounded-0 full-screen-card card-scroll">
-                        <div id="part-form"></div>
-                        <div id="part-delete" class="d-none"></div>
-                        <div id="part-edit" class="d-none"></div>
+                        <div id="order-form"></div>
+                        <div id="order-delete" class="d-none"></div>
+                        <div id="order-edit" class="d-none"></div>
                     </div>
                 </div>
                 <div class="col-9">
@@ -17,17 +17,16 @@
                         <table class="table table-sm table-hover table-striped">
                             <thead>
                             <tr>
-                                <th class="text-uppercase text-secondary">Cislo dielu</th>
-                                <th class="text-uppercase text-secondary">Zakaznicke cislo dielu</th>
-                                <th class="text-uppercase text-secondary">Revizia</th>
+                                <th class="text-uppercase text-secondary">Cislo zakazky</th>
+                                <th class="text-uppercase text-secondary">Diel</th>
+                                <th class="text-uppercase text-secondary">Pocet</th>
                                 <th class="text-uppercase text-secondary">Zakaznik</th>
-                                <th class="text-uppercase text-secondary">Popis</th>
                                 <th class="text-uppercase text-secondary"></th>
                             </tr>
                             </thead>
-                            <tbody id="part-list">
-                            {% for p in parts %}
-                                {% include 'core/part_detail.html' %}
+                            <tbody id="order-list">
+                            {% for o in orders %}
+                                {% include 'Orders/order_detail.html' %}
                             {% endfor %}
                             </tbody>
                         </table>
