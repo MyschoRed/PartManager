@@ -1,0 +1,36 @@
+<div class="container">
+<div class="row">
+    <div class="m-1">
+        <div class="">
+            <h5 class="font-weight-bolder text-center text-secondary text-gradient">
+                Zakaznik</h5>
+        </div>
+            <div class="my-4">
+                <label>Meno</label>
+                <div class="border ps-1 py-1">{{ customer.name }}</div>
+            </div>
+            <div class="my-4">
+                <label>Boost ID</label>
+                <div class="border ps-1 py-1">{{ customer.boost_id }}</div>
+            </div>
+    </div>
+</div>
+<div class="row">
+    <div class="text-center">
+        <button class="btn btn-sm btn-outline-info me-2" type="button"
+                hx-get="{% url 'customer_edit' customer.pk %}"
+                hx-target="#customer-form"
+                hx-swap="this">Upravit
+        </button>
+        <button class="btn btn-sm btn-outline-danger" type="button"
+                hx-delete="{% url 'customer_delete' customer.pk %}"
+                hx-target="#customer-delete"
+                hx-confirm="Naozaj chces zmazat zakaznika {{ customer.name }}"
+                hx-on="htmx:afterRequest: location.reload()"
+        >Zmazat
+        </button>
+    </div>
+</div>
+</div>
+
+

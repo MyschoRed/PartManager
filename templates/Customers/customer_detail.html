@@ -1,19 +1,7 @@
-<tr>
+<tr style="cursor: pointer" hx-get="{% url 'customer_preview' c.pk %}" hx-trigger="click" hx-target="#customer-form">
     <td class="">{{ c.boost_id }}</td>
     <td class="">{{ c.name }}</td>
     <td class="">
-        <button class="btn btn-sm btn-outline-info" type="button"
-                hx-get="{% url 'customer_edit' c.pk %}"
-                hx-target="#customer-form"
-                hx-swap="beforeend">Upravit
-        </button>
-        <button class="btn btn-sm btn-outline-danger" type="button"
-                hx-delete="{% url 'customer_delete' c.pk %}"
-                hx-target="#customer-delete"
-                hx-confirm="Naozaj chces zmazat zakaznika {{ c.name }}"
-                hx-on="htmx:afterRequest: location.reload()"
-        >Zmazat
-        </button>
     </td>
 </tr>
 

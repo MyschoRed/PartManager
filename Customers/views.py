@@ -6,8 +6,7 @@ from Customers.models import Customer
 
 
 # Create your views here.
-def customers(request):
-    return render(request, 'Customers/customers.html')
+
 def customer_list(request):
     customers = Customer.objects.all()
     form = CustomerForm()
@@ -16,6 +15,16 @@ def customer_list(request):
         'form': form
     }
     return render(request, 'Customers/customers_list.html', ctx)
+
+
+def customer_preview(request, pk):
+    customer = get_object_or_404(Customer, pk=pk)
+
+    ctx = {
+        'customer': customer,
+    }
+    if request.method == 'GET':
+        return render(request, 'Customers/customer_preview.html', ctx)
 
 
 def customer_add(request):
